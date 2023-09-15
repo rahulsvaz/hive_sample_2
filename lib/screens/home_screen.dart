@@ -37,29 +37,33 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text('$name'),
-        ElevatedButton(
-            onPressed: () {
-              addNote();
-            },
-            child: const Text('Add Notes')),
-        ElevatedButton(
-            onPressed: () {
-              getNote();
-            },
-            child: const Text('get NOtes')),
-        ElevatedButton(
-            onPressed: () {
-              updateNote();
-            },
-            child: const Text('Update Notes')),
-        ElevatedButton(
-            onPressed: () {
-              deleteNote;
-            },
-            child: const Text('Delete Notes')),
-      ]),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text('$name'),
+          ElevatedButton(
+              onPressed: () {
+                addNote();
+              },
+              child: const Text('Add Notes')),
+          ElevatedButton(
+              onPressed: () {
+                getNote();
+              },
+              child: const Text('get NOtes')),
+          ElevatedButton(
+              onPressed: () {
+                updateNote();
+              },
+              child: const Text('Update Notes')),
+          ElevatedButton(
+              onPressed: () {
+                deleteNote;
+              },
+              child: const Text('Delete Notes')),
+        ]),
+      ),
     );
   }
 }
