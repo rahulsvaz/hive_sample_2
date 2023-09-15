@@ -12,22 +12,54 @@ class _HomeScreenState extends State<HomeScreen> {
   Box noteBox = Hive.box('Notes');
   String? name;
 
-  addNote() {}
-  deleteNote() {}
-  editNote() {}
-  updateNote() {}
+  addNote() async {
+    await noteBox.put('name', 'Bill Gates');
+  }
+
+  getNote() async {
+    setState(() {
+      name = noteBox.get('name');
+    });
+  }
+
+  deleteNote() async {
+    await noteBox.delete('name');
+  }
+
+  updateNote() async {
+    setState(() {
+       noteBox.put('name', "Elon musk");
+    });
+   
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          ElevatedButton(onPressed: () {}, child: const Text('Add Notes')),
-          ElevatedButton(onPressed: () {}, child: const Text('Edit NOtes')),
-          ElevatedButton(onPressed: () {}, child: const Text('Update Notes')),
-          ElevatedButton(onPressed: () {}, child: const Text('Delete Notes')),
-        ]),
-      ),
+      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text('$name'),
+        ElevatedButton(
+            onPressed: () {
+              addNote();
+            },
+            child: const Text('Add Notes')),
+        ElevatedButton(
+            onPressed: () {
+              getNote();
+            },
+            child: const Text('get NOtes')),
+        ElevatedButton(
+            onPressed: () {
+              updateNote();
+            },
+            child: const Text('Update Notes')),
+        ElevatedButton(
+            onPressed: () {
+              deleteNote;
+            },
+            child: const Text('Delete Notes')),
+      ]),
     );
   }
 }
